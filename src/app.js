@@ -26,7 +26,7 @@ app.use('/', require( __dirname+'/routes/index' ) )
 
 //Set port & Sync database
 
-db.sync( {'force': true} ).then(
+db.sync( {'force': false} ).then(
 
 	() => { 
 			console.log ( 'Synchronized' )

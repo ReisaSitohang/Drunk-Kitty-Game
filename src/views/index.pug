@@ -4,7 +4,24 @@ html
 		include includes/head.pug
 	body
 		h1 Drunk Kitty
-		div#TheCard
-			img(src='/Images/card1.png')
+		div#cardbox
+			div#TheCard
+				//- (style="display: none")
+				img#CardImg(src='/Images/card1.png')
 		button#NextCard(type='button') Next Card
+		button#SaveCard(type='button') Save Card to Player
+		#SavedCard
+
+		#myModal.modal
+			.modal-content
+				.modal-header
+					span.close x
+					h2 Who does this card belong to?
+				.modal-body
+					form
+						input#NameCardOwner(type="text" name="NameCardOwner")
+						input#NameBtn(type="button" value="Meow")
+				.modal-footer
+					h3 Meowww
+
 
