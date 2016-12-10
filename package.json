@@ -1,0 +1,29 @@
+{
+  "name": "drunk-kitty",
+  "version": "0.0.1",
+  "description": "Drinking Game",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "1.15.2",
+    "express": "4.14.0",
+    "express-session": "1.14.1",
+    "pg": "6.1.0",
+    "pug": "^2.0.0-beta6",
+    "sequelize": "3.24.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReisaSitohang/Drunk-Kitty.git"
+  },
+  "author": "Reisa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ReisaSitohang/Drunk-Kitty/issues"
+  },
+  "homepage": "https://github.com/ReisaSitohang/Drunk-Kitty#readme"
+}
