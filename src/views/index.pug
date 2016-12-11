@@ -2,25 +2,49 @@ html
 	head
 		title Homepage
 		include includes/head.pug
-	body
+	body#animate-area
 		.row
 			.col-xs-12
-				button.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#myModal2') Add Player
+				button#AddPlayer.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#AddPlayerModal') 
+					span(class="glyphicon glyphicon-plus" aria-hidden="true") 
+					span  Add Player
+				button#GameRules.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#GameRulesModal') 
+					span(class="glyphicon glyphicon-list" aria-hidden="true") 
+					span  Game Rules				
+			
 		.row
 			.col-xs-2
 				#players
-			.col-xs-10
+			.col-xs-6.cardcontainer
 				h1 Drunk Kitty
 				div#cardbox
 					div#TheCard
 						//- (style="display: none")
 						img#CardImg(src='/Images/card1.png')
-				button#NextCard(type='button') Next Card
-				button#SaveCard(type='button') Save Card to Player
+				button#NextCard.btn.btn-info.btn-lg(type='button') Next Card
+				button#SaveCard.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#SaveCardModal') 
+					span(class="glyphicon glyphicon-list" aria-hidden="true") 
+					span  Save Card to Player	
 				#SavedCard
 
+
+				// Modal Game Rules
+				#GameRulesModal.modal.fade(role='dialog')
+					.modal-dialog
+						// Modal content
+						.modal-content
+							.modal-header
+								button.close(type='button', data-dismiss='modal') ×
+								h4.modal-title How to play
+							.modal-body
+								h5 Read Card and Drink
+							.modal-footer
+								p Leave your email if u want to be updated!
+								div.center
+									input(type="text" name="NamePlayer" required)
+									input.btn(type="button" value="Add")
 				// Modal Add Player
-				#myModal2.modal.fade(role='dialog')
+				#AddPlayerModal.modal.fade(role='dialog')
 					.modal-dialog
 						// Modal content
 						.modal-content
@@ -31,26 +55,19 @@ html
 								div.center
 									input#AddPlayerName(type="text" name="NamePlayer" required)
 									input#AddPlayerBtn.btn(type="button" value="Add")
-				//- #AddPlayerModal.modal
-				//- 	.modal-content
-				//- 		.modal-header
-				//- 			span.close x
-				//- 			h2 Who wants to play?
-				//- 		.modal-body
-				//- 			form
-				//- 				input#NameCardOwner(type="text" name="NameCardOwner" required)
-				//- 				input#NameBtn(type="button" value="Meow")
-				//- 		.modal-footer
-				//- 			h3 Meowww
-				//- #SaveCardModal.modal
-				//- 	.modal-content
-				//- 		.modal-header
-				//- 			span.close x
-				//- 			h2 Who does this card belong to?
-				//- 		.modal-body
+				// Save Card to Player
+				#SaveCardModal.modal.fade(role='dialog')
+					.modal-dialog
+						// Modal content
+						.modal-content
+							.modal-header
+								span.close x
+								h2 Who does this card belong to?
+							.modal-body
+								div.center
+									input#NameCardOwner(type="text" name="NamePlayer" required)
+									input#NameBtn.btn(type="button" value="Add")
+							.modal-footer
+								h3 Meowww
 
-				//- 		.modal-footer
-				//- 			h3 Meowww
-		include includes/scripts.pug		
-
-
+		include includes/scripts.pug

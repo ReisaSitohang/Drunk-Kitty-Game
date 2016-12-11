@@ -1,5 +1,10 @@
 div#cardbox{
 	min-height: 500px;
+    text-align: center;
+}
+
+div.cardcontainer{
+    text-align: center;
 }
 
 img#CardImg {
@@ -7,12 +12,37 @@ img#CardImg {
 }
 
 .playerStyle {
-    height: 46px;
+    min-height: 46px;
+    width: 149px;
     padding: 10px 16px;
     font-size: 18px;
-    line-height: 1.3333333;
     border-radius: 6px;
-    border: 1px solid transparent;
+    border: 3px solid rgb(243, 185, 195);
+    margin: 5px;
     color: #fff;
     background-color: pink;
+}
+
+button#AddPlayer, button#GameRules {
+    background-color: #c0dfed;
+    border: 3px solid #b1cfdc;
+    margin: 5px 0px 0px 5px;
+}
+
+@keyframes animatedBackground {
+    from { background-position: bottom; }
+    to { background-position: 0 100%; }
+}
+
+body{
+    background-color: #8ec1da;
+}
+
+#animate-area   { 
+    width: 100%;
+    background-image: url(./../images/kittyclouds.png);
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    animation: animatedBackground 40s linear infinite;
 }
