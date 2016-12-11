@@ -1,8 +1,7 @@
 $( document ).ready( ()=> {
-
-	$("#NextCard").click( () => {
-		console.log("clicked nextcard button")
-		let NextCard = ""
+	//This function shows random card
+	let NextCard = ""
+	function AppendRandomCard (){
 		$.get("/SwitchCard", (RandomCard)=>{
 			NextCard = RandomCard})
 		.then(()=>{ $('#TheCard').slideUp(1000, ()=>{
@@ -10,19 +9,25 @@ $( document ).ready( ()=> {
 			$('#TheCard').hide()
 			$('#TheCard').html('<img id="CardImg" src="/Images/'+NextCard+'"/>')
 			$('#TheCard').slideDown(1000)
-		})
+			})
+		})		
+	}
+
+	$('#TheCard').click( () => {
+		AppendRandomCard( )
 	})
+	$("#NextCard").click( () => {
+		AppendRandomCard( )
 	})
 
 		// Get the modal
-	var modal = document.getElementById('myModal');
+	var modal = document.getElementById('SaveCardModal');
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
 	// When the user clicks the button, open the modal 
 	$("#SaveCard").click( ()=> {
 	    modal.style.display = "block";
 	})
-
 		span.onclick = function() {
 		    	modal.style.display = "none";
 		}
