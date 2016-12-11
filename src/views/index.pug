@@ -3,36 +3,54 @@ html
 		title Homepage
 		include includes/head.pug
 	body
-		h1 Drunk Kitty
-		div#cardbox
-			div#TheCard
-				//- (style="display: none")
-				img#CardImg(src='/Images/card1.png')
-		button#NextCard(type='button') Next Card
-		button#SaveCard(type='button') Save Card to Player
-		#SavedCard
-		//- #AddPlayerModal.modal
-		//- 	.modal-content
-		//- 		.modal-header
-		//- 			span.close x
-		//- 			h2 Who wants to play?
-		//- 		.modal-body
-		//- 			form
-		//- 				input#NameCardOwner(type="text" name="NameCardOwner" required)
-		//- 				input#NameBtn(type="button" value="Meow")
-		//- 		.modal-footer
-		//- 			h3 Meowww
-		#SaveCardModal.modal
-			.modal-content
-				.modal-header
-					span.close x
-					h2 Who does this card belong to?
-				.modal-body
-					form
-						input#NameCardOwner(type="text" name="NameCardOwner" required)
-						input#NameBtn(type="button" value="Meow")
-				.modal-footer
-					h3 Meowww
+		.row
+			.col-xs-12
+				button.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#myModal2') Add Player
+		.row
+			.col-xs-2
+				#players
+			.col-xs-10
+				h1 Drunk Kitty
+				div#cardbox
+					div#TheCard
+						//- (style="display: none")
+						img#CardImg(src='/Images/card1.png')
+				button#NextCard(type='button') Next Card
+				button#SaveCard(type='button') Save Card to Player
+				#SavedCard
+
+				// Modal Add Player
+				#myModal2.modal.fade(role='dialog')
+					.modal-dialog
+						// Modal content
+						.modal-content
+							.modal-header
+								button.close(type='button', data-dismiss='modal') ×
+								h4.modal-title Who wants to play?
+							.modal-body
+								div.center
+									input#AddPlayerName(type="text" name="NamePlayer" required)
+									input#AddPlayerBtn.btn(type="button" value="Add")
+				//- #AddPlayerModal.modal
+				//- 	.modal-content
+				//- 		.modal-header
+				//- 			span.close x
+				//- 			h2 Who wants to play?
+				//- 		.modal-body
+				//- 			form
+				//- 				input#NameCardOwner(type="text" name="NameCardOwner" required)
+				//- 				input#NameBtn(type="button" value="Meow")
+				//- 		.modal-footer
+				//- 			h3 Meowww
+				//- #SaveCardModal.modal
+				//- 	.modal-content
+				//- 		.modal-header
+				//- 			span.close x
+				//- 			h2 Who does this card belong to?
+				//- 		.modal-body
+
+				//- 		.modal-footer
+				//- 			h3 Meowww
 		include includes/scripts.pug		
 
 
