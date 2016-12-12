@@ -7,11 +7,41 @@ div.cardcontainer{
     text-align: center;
 }
 
+div#SavedCard{
+    float: right;
+}
+
+div.savedCardSmall{
+    z-index: -1;
+}
+
+span.smallCard { 
+/*   position: absolute; 
+   top: 200px; 
+   left: 0; 
+   width: 100%; */
+}
+
+
+
 img#CardImg {
 	border-radius: 0px 0px 300px 300px;
 }
 
 .playerStyle {
+    min-height: 46px;
+    width: 149px;
+    padding: 10px 16px;
+    font-size: 18px;
+    border-radius: 6px;
+    border: 3px solid rgb(243, 185, 195);
+    margin: 5px;
+    color: #fff;
+    background-color: pink;
+}
+
+button.givePlayerCard{
+    text-align: center;
     min-height: 46px;
     width: 149px;
     padding: 10px 16px;
@@ -38,11 +68,11 @@ body{
     background-color: #8ec1da;
 }
 
-#animate-area   { 
+/*#animate-area   { 
     width: 100%;
-    background-image: url(./../images/kittyclouds.png);
+    background-image: url(./../images/floatingbeers.png);
     background-attachment: fixed;
     background-position: bottom;
     background-repeat: repeat-x;
-    animation: animatedBackground 40s linear infinite;
-}
+    animation: animatedBackground 30s linear infinite;
+}*/
