@@ -1,6 +1,6 @@
 $( document ).ready( ()=> {
 
-	//This function shows random card
+	//This function shows random card and its rules
 	let NextCard = ""
 	function AppendRandomCard (){
 		$.get("/SwitchCard", (RandomCard)=>{
@@ -10,8 +10,12 @@ $( document ).ready( ()=> {
 			$('#TheCard').hide()
 			$('#TheCard').html('<img id="CardImg" src="/Images/'+NextCard+'"/>')
 			$('#TheCard').slideDown(1000)
+			})
 		})
-	})		
+		$('#CardInfo-Box').fadeOut();
+		$('#CardInfo-Box').show('show');
+		$('#CardInfo').empty();
+		$('#CardInfo').append("new rules yo yo yo");
 	}
 	//Run function on click button or car
 	$('#TheCard').click( () => {

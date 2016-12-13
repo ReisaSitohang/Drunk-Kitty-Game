@@ -12,7 +12,7 @@ div#SavedCard{
 }
 
 div.savedCardSmall{
-    z-index: -1;
+/*    z-index: -1;*/
 }
 
 span.smallCard { 
@@ -26,6 +26,11 @@ span.smallCard {
 
 img#CardImg {
 	border-radius: 0px 0px 300px 300px;
+    position: absolute;
+    left: 40%;
+    top: 60%;
+    width:200px; 
+    height:210px;
 }
 
 .playerStyle {
@@ -75,4 +80,126 @@ body{
     background-position: bottom;
     background-repeat: repeat-x;
     animation: animatedBackground 30s linear infinite;
+}
+
+img#kitty {
+    position: absolute;
+    left: 12%;
+    top: 5%;
+    z-index: -3;
+}
+
+img#kittybeer {
+    position: absolute;
+    left: 32%;
+    top: 90%;
+    z-index: 1;
+}
+
+img#kittymouth {
+    position: absolute;
+    left: 39%;
+    top: 55%;
+    z-index: 1;
 }*/
+/* ============================================================================================================================
+== BUBBLE WITH A BORDER AND TRIANGLE
+** ============================================================================================================================ */
+
+/* THE SPEECH BUBBLE
+------------------------------------------------------------------------------------------------------------------------------- */
+div#CardInfo-Box{
+    display: none;
+    width: 50%;
+    position:absolute;
+    left: 70%;
+    z-index: 1;
+}
+
+div#CardInfo-Box .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+.triangle-border {
+  position:relative;
+  padding:15px;
+  margin:1em 0 3em;
+  border:5px solid #5a8f00;
+  color:#333;
+  background:#fff;
+  /* css3 */
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+}
+
+/* Variant : for left positioned triangle
+------------------------------------------ */
+
+.triangle-border.left {
+  margin-left:30px;
+}
+
+/* THE TRIANGLE
+------------------------------------------------------------------------------------------------------------------------------- */
+
+.triangle-border:before {
+  content:"";
+  position:absolute;
+  bottom:-20px; /* value = - border-top-width - border-bottom-width */
+  left:41px; /* controls horizontal position */
+  border-width:20px 20px 0;
+  border-style:solid;
+  border-color:#5a8f00 transparent;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+/* creates the smaller  triangle */
+.triangle-border:after {
+  content:"";
+  position:absolute;
+  bottom:-13px; /* value = - border-top-width - border-bottom-width */
+  left:49px; /* value = (:before left) + (:before border-left) - (:after border-left) */
+  border-width:13px 13px 0;
+  border-style:solid;
+  border-color:#fff transparent;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+/* Variant : left
+------------------------------------------ */
+
+/* creates the larger triangle */
+.triangle-border.left:before {
+  top:10px; /* controls vertical position */
+  bottom:auto;
+  left:-30px; /* value = - border-left-width - border-right-width */
+  border-width:15px 30px 15px 0;
+  border-color:transparent #5a8f00;
+}
+
+/* creates the smaller  triangle */
+.triangle-border.left:after {
+  top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
+  bottom:auto;
+  left:-20px; /* value = - border-left-width - border-right-width */
+  border-width:9px 21px 9px 0;
+  border-color:transparent #fff;
+}

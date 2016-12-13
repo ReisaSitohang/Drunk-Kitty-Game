@@ -17,7 +17,12 @@ html
 				#players
 			.col-xs-7.cardcontainer
 				h1 Drunk Kitty
+				div#CardInfo-Box.center-block
+					p#CardInfo.triangle-border.left Drink if you are a boy!
 				div#cardbox
+					img#kitty(src='/Images/nakedkitty.png')
+					//- img#kittymouth(src='/Images/kittymouth.png')
+					//- img#kittybeer(src='/Images/kittybeer.png')
 					div#TheCard
 						//- (style="display: none")
 						img#CardImg(src='/Images/card1.png')
@@ -26,49 +31,5 @@ html
 					span  Save Card to Player
 			.col-xs-3
 				#SavedCard
-
-
-				// Modal Game Rules
-				#GameRulesModal.modal.fade(role='dialog')
-					.modal-dialog
-						// Modal content
-						.modal-content
-							.modal-header
-								button.close(type='button', data-dismiss='modal') ×
-								h4.modal-title How to play
-							.modal-body
-								h5 Read Card and Drink
-							.modal-footer
-								p Leave your email if u want to be updated!
-								div.center
-									input(type="text" name="NamePlayer" required)
-									input.btn(type="button" value="Add")
-				// Modal Add Player
-				#AddPlayerModal.modal.fade(role='dialog')
-					.modal-dialog
-						// Modal content
-						.modal-content
-							.modal-header
-								button.close(type='button', data-dismiss='modal') ×
-								h4.modal-title Who wants to play?
-							.modal-body
-								div.center
-									input#AddPlayerName(type="text" name="NamePlayer" value=" " required)
-									input#AddPlayerBtn.btn(type="button" value="Add")
-				// Save Card to Player
-				#SaveCardModal.modal.fade(role='dialog')
-					.modal-dialog
-						// Modal content
-						.modal-content
-							.modal-header
-								button.close(type='button', data-dismiss='modal') ×
-								h2 Who does this card belong to?
-							.modal-body
-								.row
-									#giveCard.col-xs-10-offset-1
-										//- div
-										//- 	input#NameBtn.btn(type="button" value="Add")
-							.modal-footer
-								h3 Meowww
-
+		include includes/Modals.pug			
 		include includes/scripts.pug
