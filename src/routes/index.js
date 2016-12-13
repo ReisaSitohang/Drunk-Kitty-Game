@@ -12,6 +12,8 @@ const db         =  new Sequelize('drunkkitty', process.env.POSTGRES_USER, proce
 //Define models
 let Card = db.define('card', {
 	name: {type: Sequelize.STRING, unique: true},
+	rule: {type: Sequelize.STRING},
+	type: {type: Sequelize.STRING},
 }, {
 	timestamps: false
 })
@@ -19,6 +21,22 @@ let Card = db.define('card', {
 let User = db.define('user', {
 	name: {type: Sequelize.STRING, unique: true},
 });
+
+// Put info in card DB
+
+var ReadandParser = require (__dirname+'/../Modules/JsonReadandParser')
+
+ReadandParser (__dirname+'/../Cards.json', function(jsonContent) {
+	console.log(jsonContent)
+	Card.bulkCreate(jsonContent)
+	.catch(function(err) {
+		console.log('Error ' + err);
+	})
+	.finally(function(err) {
+		console.log('FINISHED')
+	});
+})
+
 
 //sync
 db.sync( {'force': false} )

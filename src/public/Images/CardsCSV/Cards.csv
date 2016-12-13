@@ -1,5 +1,5 @@
-Name
-Card1.png
-Card2.png
-Card3.png
-Card4.png
+Name,Rule,Type
+Card1.png,Drink if you are a boy!,Regular
+Card2.png,"Each player plays rock paper scissors against a player with another team. If one team has more players a player goes twice. Team with the most wins, gets points!",Team
+Card3.png,"You have snake eyes! If a player looks you in your beautiful eyes, they have to drink. There can only be one person with snake eyes.",Regular
+Card4.png,"If you can cross your eyes you get a point, if not you drink!",Single
