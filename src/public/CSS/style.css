@@ -11,24 +11,11 @@ div#SavedCard{
     float: right;
 }
 
-div.savedCardSmall{
-/*    z-index: -1;*/
-}
-
-span.smallCard { 
-/*   position: absolute; 
-   top: 200px; 
-   left: 0; 
-   width: 100%; */
-}
-
-
-
 img#CardImg {
 	border-radius: 0px 0px 300px 300px;
-    position: absolute;
+/*    position: absolute;
     left: 40%;
-    top: 60%;
+    top: 60%;*/
     width:200px; 
     height:210px;
 }
@@ -118,11 +105,11 @@ div#CardInfo-Box{
 
 div#CardInfo-Box .show {
     visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
+    -webkit-animation: fadeIn s;
+    animation: fadeIn 3s;
 }
 
-/* Add animation (fade in the popup) */
+/* Add animation (fade in the popup) 
 @-webkit-keyframes fadeIn {
     from {opacity: 0;} 
     to {opacity: 1;}
@@ -131,7 +118,7 @@ div#CardInfo-Box .show {
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
-}
+}*/
 
 .triangle-border {
   position:relative;

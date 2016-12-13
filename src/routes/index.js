@@ -53,7 +53,7 @@ router.get('/SwitchCard', (req, res) => {
 		]
 	}).then( (data)=>{
 		console.log(data)
-		res.send(data.name)
+		res.send(data)
 	})
 })
 

@@ -2,20 +2,31 @@ $( document ).ready( ()=> {
 
 	//This function shows random card and its rules
 	let NextCard = ""
+	let CardInfo = ""
 	function AppendRandomCard (){
-		$.get("/SwitchCard", (RandomCard)=>{
-			NextCard = RandomCard})
+		$.get("/SwitchCard", (Card)=>{
+			NextCard = Card.name
+			CardInfo = Card.rule
+			console.log(NextCard)
+			console.log(CardInfo)
+		})
 		.then(()=>{ $('#TheCard').slideUp(1000, ()=>{
+			//show card
 			$('#TheCard').empty()
 			$('#TheCard').hide()
 			$('#TheCard').html('<img id="CardImg" src="/Images/'+NextCard+'"/>')
 			$('#TheCard').slideDown(1000)
-			})
+			//show card info in bubble
+			$('#CardInfo-Box').hide();
+			$('#CardInfo-Box').fadeOut();
+			$('#CardInfo-Box').show('show');
+			$('#CardInfo').empty();
+			$('#CardInfo').append(CardInfo);
+			$('#CardInfo').hide();
+			$('#CardInfo').fadeIn();
 		})
-		$('#CardInfo-Box').fadeOut();
-		$('#CardInfo-Box').show('show');
-		$('#CardInfo').empty();
-		$('#CardInfo').append("new rules yo yo yo");
+	})
+
 	}
 	//Run function on click button or car
 	$('#TheCard').click( () => {
