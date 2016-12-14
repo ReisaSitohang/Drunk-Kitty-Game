@@ -4,31 +4,37 @@ html
 		include includes/head.pug
 	body#animate-area
 		.row
-			.col-xs-12
-				button#AddPlayer.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#AddPlayerModal') 
-					span(class="glyphicon glyphicon-plus" aria-hidden="true") 
-					span  Add Player
-				button#GameRules.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#GameRulesModal') 
-					span(class="glyphicon glyphicon-list" aria-hidden="true") 
-					span  Game Rules				
+			.col-xs-2.nopadding
+				div
+					button#GameRules.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#GameRulesModal') 
+						span(class="glyphicon glyphicon-list leftspan" aria-hidden="true") 
+						span  Rules
+				div
+					button#AddPlayer.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#AddPlayerModal') 
+						span(class="glyphicon glyphicon-plus" aria-hidden="true") 
+						span  Add Player
+			.col-xs-7
+				div.titlebox
+					span.title Drunk Kitty			
 			
 		.row
 			.col-xs-2
 				#players
 			.col-xs-7.cardcontainer
-				h1 Drunk Kitty
-				div#CardInfo-Box.center-block
-					p#CardInfo.triangle-border.left
-				div#cardbox
-					//- img#kitty(src='/Images/nakedkitty.png')
-					//- img#kittymouth(src='/Images/kittymouth.png')
-					//- img#kittybeer(src='/Images/kittybeer.png')
-					div#TheCard
-						//- (style="display: none")
-						img#CardImg(src='/Images/card1.png')
-				button#NextCard.btn.btn-info.btn-lg(type='button') Next Card
-				button#SaveCard.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#SaveCardModal') 
-					span  Save Card to Player
+				div.buttons
+					button#NextCard.btn.btn-info.btn-lg(type='button') Next Card
+					button#SaveCard.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#SaveCardModal') 
+						span  Save Card
+				div.center-block.border
+					div#CardInfo-Box
+						p#CardInfo.triangle-border.left
+					div#cardbox
+						div#kittybox
+							img#kitty.kittysize(src='/Images/nakedkitty.png')
+							img#kittystuff.kitysize(src='/Images/kittystuff.png')
+						div#TheCard
+							//- (style="display: none")
+							img#CardImg(src='/Images/card1.png')
 			.col-xs-3
 				#SavedCard
 		include includes/Modals.pug			

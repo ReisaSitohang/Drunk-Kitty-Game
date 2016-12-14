@@ -1,6 +1,65 @@
+@font-face {
+    font-family: titlefont;
+    src: url(./../fonts/PORKH___.TTF);
+}
+.border{
+  border: solid;
+}
+
+div.nopadding {
+  padding: 0px;
+  padding-left: 13px;
+}
+
+div.titlebox{
+  text-align: center;
+}
+span.title{
+  font-family: titlefont;
+  font-size: 76px;
+}
+
+button#AddPlayer, button#GameRules {
+    width: 148px;
+    background-color: #c0dfed;
+    border: 3px solid #b1cfdc;
+    margin: 5px 0px 0px 5px;
+}
+span.leftspan{
+  text-align: left;
+}
+
+div#TheCard{
+    position: absolute;
+}
+
 div#cardbox{
-	min-height: 500px;
-    text-align: center;
+  position: relative;
+  border: solid green;
+  max-width: 794px;
+  text-align: center;
+}
+
+div#kittybox{
+    width: 80%;
+    position: relative;
+    border: solid pink;
+    height: 35%;
+}
+img#kitty {
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+    z-index: -1;
+}
+
+img#kittystuff{
+  position: absolute;
+  width: 100%;
+  top:0px;
+  left:0px;
+  z-index: 1;
 }
 
 div.cardcontainer{
@@ -13,11 +72,8 @@ div#SavedCard{
 
 img#CardImg {
 	border-radius: 0px 0px 300px 300px;
-/*    position: absolute;
-    left: 40%;
-    top: 60%;*/
-    width:200px; 
-    height:210px;
+  width:200px; 
+  height:210px;
 }
 
 .playerStyle {
@@ -45,11 +101,6 @@ button.givePlayerCard{
     background-color: pink;
 }
 
-button#AddPlayer, button#GameRules {
-    background-color: #c0dfed;
-    border: 3px solid #b1cfdc;
-    margin: 5px 0px 0px 5px;
-}
 
 @keyframes animatedBackground {
     from { background-position: bottom; }
@@ -58,9 +109,10 @@ button#AddPlayer, button#GameRules {
 
 body{
     background-color: #8ec1da;
+/*    background-color: #0b4b6c;*/
 }
 
-/*#animate-area   { 
+#animate-area   { 
     width: 100%;
     background-image: url(./../images/floatingbeers.png);
     background-attachment: fixed;
@@ -69,26 +121,7 @@ body{
     animation: animatedBackground 30s linear infinite;
 }
 
-img#kitty {
-    position: absolute;
-    left: 12%;
-    top: 5%;
-    z-index: -3;
-}
 
-img#kittybeer {
-    position: absolute;
-    left: 32%;
-    top: 90%;
-    z-index: 1;
-}
-
-img#kittymouth {
-    position: absolute;
-    left: 39%;
-    top: 55%;
-    z-index: 1;
-}*/
 /* ============================================================================================================================
 == BUBBLE WITH A BORDER AND TRIANGLE
 ** ============================================================================================================================ */
@@ -109,7 +142,7 @@ div#CardInfo-Box .show {
     animation: fadeIn 3s;
 }
 
-/* Add animation (fade in the popup) 
+ Add animation (fade in the popup) 
 @-webkit-keyframes fadeIn {
     from {opacity: 0;} 
     to {opacity: 1;}
@@ -118,7 +151,7 @@ div#CardInfo-Box .show {
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
-}*/
+}
 
 .triangle-border {
   position:relative;
@@ -132,9 +165,6 @@ div#CardInfo-Box .show {
   -moz-border-radius:10px;
   border-radius:10px;
 }
-
-/* Variant : for left positioned triangle
------------------------------------------- */
 
 .triangle-border.left {
   margin-left:30px;
@@ -189,4 +219,8 @@ div#CardInfo-Box .show {
   left:-20px; /* value = - border-left-width - border-right-width */
   border-width:9px 21px 9px 0;
   border-color:transparent #fff;
+}
+
+.buttonwidth{
+  width:100%;
 }

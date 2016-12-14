@@ -3,12 +3,15 @@ $( document ).ready( ()=> {
 	//This function shows random card and its rules
 	let NextCard = ""
 	let CardInfo = ""
+	let CardType = ""
 	function AppendRandomCard (){
 		$.get("/SwitchCard", (Card)=>{
 			NextCard = Card.name
 			CardInfo = Card.rule
+			CardType = Card.type
 			console.log(NextCard)
 			console.log(CardInfo)
+			console.log(CardType)
 		})
 		.then(()=>{ $('#TheCard').slideUp(1000, ()=>{
 			//show card
@@ -26,15 +29,38 @@ $( document ).ready( ()=> {
 			$('#CardInfo').fadeIn();
 		})
 	})
+}
 
+function SinglePoint (){
+		if(CardType=="Single"){
+		$('#CardInfo').empty();
+		$('#CardInfo').append("Did you get a point?<p id='GO'>YES</p>");
+		$('#CardInfo').hide();
+		$('#CardInfo').fadeIn();
+		$('#GO').click(()=>{
+			AppendRandomCard( )
+		})
 	}
+}
 	//Run function on click button or car
 	$('#TheCard').click( () => {
+		if(CardType=="Single"){
+			SinglePoint ()			
+		}
+		else {
 		AppendRandomCard( )
+		}
 	})
+
 	$("#NextCard").click( () => {
+		if(CardType=="Single"){
+			SinglePoint ()			
+		}
+		else {
 		AppendRandomCard( )
+		}
 	})
+
 
 	//This function adds a player
 	let PlayerCounter = 0
