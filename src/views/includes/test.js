@@ -29,4 +29,29 @@ let team2 = Math.floor(teams)
 var x = arr
 var y = x.splice(team1, team2);
 console.log(x);
-console.log(y);          
+console.log(y); 
+
+
+
+[
+ {
+   "name": "Card1.png",
+   "rule": "Drink if you are a boy!",
+   "type": "Regular"
+ },
+ {
+   "name": "Card2.png",
+   "rule": "Each player plays rock paper scissors against a player with another team. If one team has more players a player goes twice. Team with the most wins, gets points!",
+   "type": "Team"
+ },
+ {
+   "name": "Card3.png",
+   "rule": "You have snake eyes! If a player looks you in your beautiful eyes, they have to drink. There can only be one person with snake eyes.",
+   "type": "Regular"
+ },
+ {
+   "name": "Card4.png",
+   "rule": "If you can cross your eyes you get a point, if not you drink!",
+   "type": "Single"
+ }
+]         

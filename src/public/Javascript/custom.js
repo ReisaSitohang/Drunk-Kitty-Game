@@ -1,5 +1,11 @@
 $( document ).ready( ()=> {
-
+	//This function adds info on the card Bubble
+	function appendCardInfo (text) {
+	$('#CardInfo').empty();
+	$('#CardInfo').append(text);
+	$('#CardInfo').hide();
+	$('#CardInfo').fadeIn();
+	}
 	//This function shows random card and its rules
 	let NextCard = ""
 	let CardInfo = ""
@@ -23,41 +29,98 @@ $( document ).ready( ()=> {
 			$('#CardInfo-Box').hide();
 			$('#CardInfo-Box').fadeOut();
 			$('#CardInfo-Box').show('show');
-			$('#CardInfo').empty();
-			$('#CardInfo').append(CardInfo);
-			$('#CardInfo').hide();
-			$('#CardInfo').fadeIn();
-		})
-	})
-}
-
-function SinglePoint (){
-		if(CardType=="Single"){
-		$('#CardInfo').empty();
-		$('#CardInfo').append("Did you get a point?<p id='GO'>YES</p>");
-		$('#CardInfo').hide();
-		$('#CardInfo').fadeIn();
-		$('#GO').click(()=>{
-			AppendRandomCard( )
+			appendCardInfo (CardInfo)
+				if(CardType=="Single"){
+					SinglePoint ()
+				}
+			})
 		})
 	}
-}
-	//Run function on click button or car
+	//This function gives points for the single player games
+	function SinglePoint (){
+		//Get a point yes or no?
+			let pointQ = "<div>Do you get a point?</div><div><button id='YES'>YES</p><button id='NO'>NO</p></div><div id='nopoint'></div>"
+			$('#CardInfo').append(pointQ)
+			//No point, next card
+			$('#NO').click( ()=>{
+				AppendRandomCard( )
+			})
+			//Got a point yes, who got a point?
+			$('#YES').click(()=>{
+				$('#nopoint').fadeOut()
+				console.log("clicked Yes")
+				let ArrayName = document.getElementById('players').getElementsByClassName('namelist')
+				console.log(ArrayName)
+				$('#CardInfo').append("<div><p>Who got a point?</p></div>")
+				// let names =""
+				for (var i = 0; i < ArrayName.length; i++) {
+					console.log("I am looping")
+					let name = ArrayName[i].innerText 
+					console.log(name)
+					let names= '<button class="givePlayerPoint"><span number="'+(i+1)+'" class="namelist">'+name+'</span>'
+					console.log(names)
+					let pointYes = names
+					$('#CardInfo').append(pointYes)
+				}
+			// Get the player that gets a points
+			// let givePlayerPoint = 0
+			$(".givePlayerPoint").click( () => {
+				// givePlayerPoint = givePlayerPoint+1
+				// let number = event.target.getElementByClass('number')
+				let target = event.target.innerText
+				let numberID = event.target.getAttribute('number')
+				console.log(numberID)
+				console.log("score"&numberID)
+				// let OldScore = document.getElementById("score"&numberID)
+				// console.log(OldScore)
+				// let NewScore = OldScore+1
+				// $('#score'+numberID).empty()
+				// $('#score'+numberID).append(NewScore)
+
+						// let SinglePoint = 1
+						// let DoublePoint = 2
+						// let pinfo = document.getElementById('players')
+						// let OldScore = document.getElementById('players').getElementsByClassName('score')
+
+						// let NewScore = OldScore
+						// $(".givePlayerPoint")
+
+			})
+
+
+				// let points = document.getElementById('TheCard').getElementsByTagName('img')[0].src
+				// let srcCard = document.getElementById('TheCard').getElementsByTagName('img')[0].src
+				// let SavedCard = '<div id="savedCard'+giveCardCounter+'" class="savedCardSmall"><span>'+name+'</span><span aria-hidden="true" class="glyphicon glyphicon-remove smallCard" id="removeSavedCard'+giveCardCounter+'"></span><img src="'+srcCard+'" style="width:100px;height:80px; margin:5px;"></div>'
+				// $("#SavedCard").prepend(SavedCard)
+				// $(".smallCard").click( () => {
+				// 	console.log("clicked glyphy")
+				// 	let target = "#"+event.target.id
+				// 	console.log(target)
+				// 	id = $(target).closest("div").prop("id")
+				// 	let CardID = "#"+id
+				// 	$(CardID).remove()				
+				// })			
+				// })
+			})//Closes click on yes
+	}//Closes function Single point
+
+	//Run relevant function on click button or car
 	$('#TheCard').click( () => {
 		if(CardType=="Single"){
-			SinglePoint ()			
+		$('#nopoint').empty()
+		$('#nopoint').append("Meow.. Meowwww...Give the points..Meoww..")	
 		}
 		else {
-		AppendRandomCard( )
+			AppendRandomCard( )
 		}
 	})
 
 	$("#NextCard").click( () => {
 		if(CardType=="Single"){
-			SinglePoint ()			
+		$('#nopoint').append("Meow.. Meowwww...Give the points..Meoww..")		
 		}
 		else {
-		AppendRandomCard( )
+			AppendRandomCard( )
 		}
 	})
 
@@ -69,7 +132,7 @@ function SinglePoint (){
 			PlayerCounter = PlayerCounter+1
 			console.log(PlayerCounter)
 			let name = $('#AddPlayerName').val()
-			$('#players').append('<div class="playerStyle" id="Playa'+PlayerCounter+'"><span id="remove'+PlayerCounter+'" class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="namelist">'+name+'</span><span class="score" style="float : right" id="ScorePlayer'+PlayerCounter+'"> 0</span></div>')
+			$('#players').append('<div class="playerStyle" id="Playa'+PlayerCounter+'"><span id="remove'+PlayerCounter+'" class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="namelist">'+name+'</span><span id="score'+PlayerCounter+'" style="float : right"> 0</span></div>')
 			$('#AddPlayerName').val(" ")
 			$(".glyphicon-remove").click( () => {
 				let target = "#"+event.target.id
