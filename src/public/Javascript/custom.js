@@ -39,7 +39,7 @@ $( document ).ready( ()=> {
 	//This function gives points for the single player games
 	function SinglePoint (){
 		//Get a point yes or no?
-			let pointQ = "<div>Do you get a point?</div><div><button id='YES'>YES</p><button id='NO'>NO</p></div><div id='nopoint'></div>"
+			let pointQ = "<div>Do you get a point?</div><div><button class='btn btn-sm btn-success' id='YES'>YES</p><button class='btn btn-sm btn-danger' id='NO'>NO</p></div><div id='nopoint'></div>"
 			$('#CardInfo').append(pointQ)
 			//No point, next card
 			$('#NO').click( ()=>{

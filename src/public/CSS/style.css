@@ -17,6 +17,7 @@ div.titlebox{
 span.title{
   font-family: titlefont;
   font-size: 76px;
+  color: #fb696f;
 }
 
 button#AddPlayer, button#GameRules {
