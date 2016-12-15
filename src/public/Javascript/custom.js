@@ -63,20 +63,17 @@ $( document ).ready( ()=> {
 					$('#CardInfo').append(pointYes)
 				}
 			// Get the player that gets a points
-			// let givePlayerPoint = 0
 			$(".givePlayerPoint").click( () => {
-				// givePlayerPoint = givePlayerPoint+1
-				// let number = event.target.getElementByClass('number')
 				let target = event.target.innerText
-				let numberID = event.target.getAttribute('number')
-				console.log(numberID)
-				console.log("score"&numberID)
-				// let OldScore = document.getElementById("score"&numberID)
-				// console.log(OldScore)
-				// let NewScore = OldScore+1
-				// $('#score'+numberID).empty()
-				// $('#score'+numberID).append(NewScore)
-
+				let num = event.target.getAttribute('number')
+				let theId = "#score"+num
+				console.log(theId)
+				//Get the old points
+				let OldScore = Number($(theId).text())
+				//Add a point
+				let NewScore = OldScore+1
+				$('#score'+num).empty()
+				$('#score'+num).append("<span>"+NewScore+"</span>")
 						// let SinglePoint = 1
 						// let DoublePoint = 2
 						// let pinfo = document.getElementById('players')
@@ -132,7 +129,7 @@ $( document ).ready( ()=> {
 			PlayerCounter = PlayerCounter+1
 			console.log(PlayerCounter)
 			let name = $('#AddPlayerName').val()
-			$('#players').append('<div class="playerStyle" id="Playa'+PlayerCounter+'"><span id="remove'+PlayerCounter+'" class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="namelist">'+name+'</span><span id="score'+PlayerCounter+'" style="float : right"> 0</span></div>')
+			$('#players').append('<div class="playerStyle" id="Playa'+PlayerCounter+'"><span id="remove'+PlayerCounter+'" class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="namelist">'+name+'</span><div id="score'+PlayerCounter+'" style="display: inline-block; float : right"><span>0</span></div></div>')
 			$('#AddPlayerName').val(" ")
 			$(".glyphicon-remove").click( () => {
 				let target = "#"+event.target.id
@@ -140,7 +137,8 @@ $( document ).ready( ()=> {
 				let PlayaID = "#"+id
 				$(PlayaID).remove()				
 			})
-		}	
+			console.log( "joehoe"+$('#score1 span').val() )
+		}
 	}
 	//Run function on click button or on keyboard enter
 	$("#AddPlayerBtn").click( () => {
