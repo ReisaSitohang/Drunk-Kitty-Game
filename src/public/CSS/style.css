@@ -8,6 +8,11 @@ h5 {
   font-size: 30px;
 }
 
+p#CardInfo{
+  font-family: 'Dekko', cursive;
+  font-size: 20px;
+}
+
 .modal-content {
   border-radius: 30px 30px 30px 30px;
 }
