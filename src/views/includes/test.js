@@ -36,7 +36,7 @@ console.log(y);
 [
  {
    "name": "Card1.png",
-   "rule": "Drink if you are a boy!",
+   "rule": "All the boys have to drink!",
    "type": "Regular"
  },
  {
@@ -46,12 +46,17 @@ console.log(y);
  },
  {
    "name": "Card3.png",
-   "rule": "You have snake eyes! If a player looks you in your beautiful eyes, they have to drink. There can only be one person with snake eyes.",
+   "rule": "You have snake eyes! If a player looks you in your beautiful eyes, they have to drink. There can only be one person with snake eyes. Save this card on the deck!",
    "type": "Regular"
  },
  {
    "name": "Card4.png",
    "rule": "If you can cross your eyes you get a point, if not you drink!",
    "type": "Single"
+ },
+ {
+   "name": "Card5.png",
+   "rule": "All the girls have to drink!",
+   "type": "Regular"
  }
 ]         

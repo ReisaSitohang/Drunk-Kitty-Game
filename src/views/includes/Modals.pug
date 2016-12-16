@@ -25,6 +25,8 @@
 				div.center
 					input#AddPlayerName(type="text" name="NamePlayer" value=" " required)
 					input#AddPlayerBtn.btn(type="button" value="Add")
+			.modal-footer
+				p
 // Save Card to Player
 #SaveCardModal.modal.fade(role='dialog')
 	.modal-dialog
@@ -39,7 +41,7 @@
 						//- div
 						//- 	input#NameBtn.btn(type="button" value="Add")
 			.modal-footer
-				h3 Meowww
+				p
 // Add Card Modal
 #AddCardModal.modal.fade(role='dialog')
 	.modal-dialog
@@ -51,7 +53,7 @@
 			.modal-body
 				form(method="post",enctype="multipart/form-data",action="/upload") 
 					p 
-						textarea(style="min-height:250px; width:100%;" rows="10" cols="50" type="text",name="Rule",placeholder="Meow...What is your idea?") 
+						textarea(style="min-height:250px; width:100%;" rows="10" cols="50" type="text",name="Rule") Meow...What is your idea? Choose Single for a single player point card, Team for a team game with points or just choose regular for a just drink no point card. 
 					span
 						input(style="margin: 20px;" type='radio', name='Type', value='Single')
 						|  Single     
@@ -64,4 +66,4 @@
 					p
 						input(type="submit" value="Upload")
 			.modal-footer
-				h3 Meowww
+				p
