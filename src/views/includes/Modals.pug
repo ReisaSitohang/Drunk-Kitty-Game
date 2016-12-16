@@ -40,3 +40,28 @@
 						//- 	input#NameBtn.btn(type="button" value="Add")
 			.modal-footer
 				h3 Meowww
+// Add Card Modal
+#AddCardModal.modal.fade(role='dialog')
+	.modal-dialog
+		// Modal content
+		.modal-content
+			.modal-header
+				button.close(type='button', data-dismiss='modal') ×
+				h2 Make up your own card!
+			.modal-body
+				form(method="post",enctype="multipart/form-data",action="/upload") 
+					p 
+						textarea(style="min-height:250px; width:100%;" rows="10" cols="50" type="text",name="Rule",placeholder="Meow...What is your idea?") 
+					span
+						input(style="margin: 20px;" type='radio', name='Type', value='Single')
+						|  Single     
+						input(style="margin: 20px;" type='radio', name='Type', value='Team')
+						|  Team     
+						input(style="margin: 20px;" type='radio', name='Type', value='Regular')
+						|  Regular     
+					p 
+						input(type="file",name="upl", value="Choose File") 
+					p
+						input(type="submit" value="Upload")
+			.modal-footer
+				h3 Meowww

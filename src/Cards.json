@@ -1,7 +1,13 @@
 [
  {
+   "name": "Card2.png",
+   "rule": "Each player plays rock paper scissors against a player with another team. If one team has more players a player goes twice. Team with the most wins, gets points!",
+   "type": "Team"
+ },
+ {
    "name": "Card4.png",
    "rule": "If you can cross your eyes you get a point, if not you drink!",
-   "type": "Single"
+   "type": "Single",
+   "origin": "original"
  }
 ]

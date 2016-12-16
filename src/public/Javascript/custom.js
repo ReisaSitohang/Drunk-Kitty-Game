@@ -33,6 +33,9 @@ $( document ).ready( ()=> {
 				if(CardType=="Single"){
 					SinglePoint ()
 				}
+				if(CardType=="Team"){
+					TeamPoint ()
+				}
 			})
 		})
 	}
@@ -51,11 +54,12 @@ $( document ).ready( ()=> {
 				console.log("clicked Yes")
 				let ArrayName = document.getElementById('players').getElementsByClassName('namelist')
 				console.log(ArrayName)
-				$('#CardInfo').append("<div><p>Who got a point?</p></div>")
-				// let names =""
+				$('#CardInfo').append("<div><p>Meoow...Who are you? I'm too drunk to remember..</p></div>")
+				let ArrayNames = []
 				for (var i = 0; i < ArrayName.length; i++) {
 					console.log("I am looping")
-					let name = ArrayName[i].innerText 
+					let name = ArrayName[i].innerText
+					ArrayNames.push(name) 
 					console.log(name)
 					let names= '<button class="givePlayerPoint"><span number="'+(i+1)+'" class="namelist">'+name+'</span>'
 					console.log(names)
@@ -74,32 +78,63 @@ $( document ).ready( ()=> {
 				let NewScore = OldScore+1
 				$('#score'+num).empty()
 				$('#score'+num).append("<span>"+NewScore+"</span>")
-						// let SinglePoint = 1
-						// let DoublePoint = 2
-						// let pinfo = document.getElementById('players')
-						// let OldScore = document.getElementById('players').getElementsByClassName('score')
-
-						// let NewScore = OldScore
-						// $(".givePlayerPoint")
-
+					AppendRandomCard( )
 			})
-
-
-				// let points = document.getElementById('TheCard').getElementsByTagName('img')[0].src
-				// let srcCard = document.getElementById('TheCard').getElementsByTagName('img')[0].src
-				// let SavedCard = '<div id="savedCard'+giveCardCounter+'" class="savedCardSmall"><span>'+name+'</span><span aria-hidden="true" class="glyphicon glyphicon-remove smallCard" id="removeSavedCard'+giveCardCounter+'"></span><img src="'+srcCard+'" style="width:100px;height:80px; margin:5px;"></div>'
-				// $("#SavedCard").prepend(SavedCard)
-				// $(".smallCard").click( () => {
-				// 	console.log("clicked glyphy")
-				// 	let target = "#"+event.target.id
-				// 	console.log(target)
-				// 	id = $(target).closest("div").prop("id")
-				// 	let CardID = "#"+id
-				// 	$(CardID).remove()				
-				// })			
-				// })
 			})//Closes click on yes
 	}//Closes function Single point
+
+	//This function is for team games
+	function TeamPoint (){
+		let ArrayName = document.getElementById('players').getElementsByClassName('namelist')
+		let ArrayNames = []
+		for (var i = 0; i < ArrayName.length; i++) {
+			console.log("I am looping")
+			let name = ArrayName[i].innerText
+			ArrayNames.push(name) 
+		}
+
+		//Function that randomizes/shuffles the array
+		function shuffle(array) {
+		  var currentIndex = array.length, temporaryValue, randomIndex;
+
+		  // While there remain elements to shuffle...
+		  while (0 !== currentIndex) {
+
+		    // Pick a remaining element...
+		    randomIndex = Math.floor(Math.random() * currentIndex);
+		    currentIndex -= 1;
+
+		    // And swap it with the current element.
+		    temporaryValue = array[currentIndex];
+		    array[currentIndex] = array[randomIndex];
+		    array[randomIndex] = temporaryValue;
+		  }
+
+		  return array;
+		}
+		// Get random teams, divide by 2 but doesn't have to be even numbers
+		arr = shuffle(ArrayNames);
+		let arraylength = arr.length
+		let teams = arraylength/2
+		let largeteam = Math.ceil(teams)
+		let smallteam = Math.floor(teams)
+
+		var team1 = arr
+		var team2 = team1.splice(largeteam, smallteam);
+		$('#CardInfo').append("<br><br><div><p>Meoow....Your teams : </p></div>")
+		for (var i = 0; i < team1.length; i++) {
+			let name = team1[i]
+			let teams= '<button class="Team1 btn btn-sm btn-danger"><span numberteam="'+(i+1)+'">'+name+'</span><br>'
+			$('#CardInfo').append(teams)
+		}
+
+		for (var i = 0; i < team2.length; i++) {
+			let name = team2[i]
+			let teams= '<button class="Team2 btn btn-sm btn-success"><span numberteam="'+(i+1)+'">'+name+'</span>'
+			$('#CardInfo').append(teams)
+		}		
+	}
+
 
 	//Run relevant function on click button or car
 	$('#TheCard').click( () => {

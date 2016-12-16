@@ -6,6 +6,19 @@
   border: solid;
 }
 
+#AddCardBox{
+
+}
+
+button#AddCard{
+    width: 70%;
+    background-color: #c0dfed;
+    border: 3px solid #b1cfdc;
+    float: right;
+    margin: 5px 5px 5px 5px;
+}
+
+
 div.nopadding {
   padding: 0px;
   padding-left: 13px;
@@ -31,7 +44,17 @@ span.leftspan{
 }
 
 div#TheCard{
-    position: absolute;
+    margin-top: 40%;
+    border: solid yellow;
+    vertical-align: center;
+    width: 100%;
+    height: 65%;
+}
+
+img#CardImg {
+  border-radius: 0px 0px 300px 300px;
+  width:25%; 
+  height:65%
 }
 
 div#cardbox{
@@ -71,11 +94,7 @@ div#SavedCard{
     float: right;
 }
 
-img#CardImg {
-	border-radius: 0px 0px 300px 300px;
-  width:200px; 
-  height:210px;
-}
+
 
 .playerStyle {
     min-height: 46px;

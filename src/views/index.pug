@@ -12,11 +12,15 @@ html
 				div
 					button#AddPlayer.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#AddPlayerModal') 
 						span(class="glyphicon glyphicon-plus" aria-hidden="true") 
-						span  Add Player
+						span  Add Player				
 			.col-xs-7
 				div.titlebox
-					span.title Drunk Kitty			
-			
+					span.title Drunk Kitty	
+			.col-xs-3
+				div#AddCardBox
+					button#AddCard.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#AddCardModal') 
+						span(class="glyphicon glyphicon-plus" aria-hidden="true") 
+						span  Add Your Own Card!			
 		.row
 			.col-xs-2
 				#players
@@ -29,12 +33,12 @@ html
 					div#CardInfo-Box
 						p#CardInfo.triangle-border.left
 					div#cardbox
-						//- div#kittybox
-						//- 	img#kitty.kittysize(src='/Images/nakedkitty.png')
-						//- 	img#kittystuff.kitysize(src='/Images/kittystuff.png')
-						div#TheCard
-							//- (style="display: none")
-							img#CardImg(src='/Images/card1.png')
+						div#kittybox
+							img#kitty.kittysize(src='/Images/nakedkitty.png')
+							img#kittystuff.kitysize(src='/Images/kittystuff.png')
+							div#TheCard
+								//- (style="display: none")
+								img#CardImg(src='/Images/card1.png')
 			.col-xs-3
 				#SavedCard
 		include includes/Modals.pug			

@@ -2,18 +2,30 @@
 //__________Import Modules
 const express    =  require( 'express' )
 const router     =  express.Router(  )
-// const session    =  require( 'express-session' )
 const bodyParser =  require( 'body-parser' )
 const Sequelize  =  require( 'Sequelize' )
+var multer  = require('multer')
+var path = require('path')
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images/uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
+  }
+})
 const db         =  new Sequelize('drunkkitty', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD,{
 	host: 'localhost',
 	dialect: 'postgres'
 });
+//Middleware
+router.use(bodyParser.json())
 //Define models
 let Card = db.define('card', {
 	name: {type: Sequelize.STRING, unique: true},
 	rule: {type: Sequelize.STRING},
 	type: {type: Sequelize.STRING},
+	origin: {type: Sequelize.STRING},
 }, {
 	timestamps: false
 })
@@ -57,6 +69,17 @@ router.get('/SwitchCard', (req, res) => {
 	})
 })
 
+//Upload Card
+router.post('/upload', multer({ storage: storage}).single('upl'), function(req,res)
+	{ console.log(req.body) 
+		console.log(req.file.filename)
+		Card.create({
+		name: req.file.filename,
+		rule: req.body.Rule,
+		type: req.body.Type,
+		origin: "notoriginal",
+		})
+		res.status(204).end(); })
 
 
   ////////////////////
