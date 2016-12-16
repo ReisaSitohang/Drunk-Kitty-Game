@@ -8,7 +8,7 @@ var multer  = require('multer')
 var path = require('path')
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/images/uploads/')
+    cb(null, './public/images/')
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
@@ -20,6 +20,9 @@ const db         =  new Sequelize('drunkkitty', process.env.POSTGRES_USER, proce
 });
 //Middleware
 router.use(bodyParser.json())
+router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+	extended: true
+})); 
 //Define models
 let Card = db.define('card', {
 	name: {type: Sequelize.STRING, unique: true},
@@ -34,6 +37,9 @@ let User = db.define('user', {
 	name: {type: Sequelize.STRING, unique: true},
 });
 
+let Email = db.define('email', {
+	email: {type: Sequelize.STRING, unique: true},
+});
 // Put info in card DB
 
 var ReadandParser = require (__dirname+'/../Modules/JsonReadandParser')
@@ -69,6 +75,16 @@ router.get('/SwitchCard', (req, res) => {
 	})
 })
 
+//Save emails
+router.post('/email', (req, res) => {
+	Email.create({
+		email: req.body.email
+	}).then( (data)=>{
+		console.log(data)
+		res.status(204).end()
+	})
+})
+
 //Upload Card
 router.post('/upload', multer({ storage: storage}).single('upl'), function(req,res)
 	{ console.log(req.body) 
@@ -80,6 +96,14 @@ router.post('/upload', multer({ storage: storage}).single('upl'), function(req,r
 		origin: "notoriginal",
 		})
 		res.status(204).end(); })
+// router.post('/uploadnoimg', (res,req)=>{
+// 		Card.create({
+// 		name: req.file.filename,
+// 		rule: req.body.Rule,
+// 		type: req.body.Type,
+// 		origin: "notoriginal",
+// 		})
+// })
 
 
   ////////////////////

@@ -202,7 +202,7 @@ $( document ).ready( ()=> {
 			console.log( target )
 			let name = target
 			let srcCard = document.getElementById('TheCard').getElementsByTagName('img')[0].src
-			let SavedCard = '<div id="savedCard'+giveCardCounter+'" class="savedCardSmall"><span>'+name+'</span><span aria-hidden="true" class="glyphicon glyphicon-remove smallCard" id="removeSavedCard'+giveCardCounter+'"></span><img src="'+srcCard+'" style="width:100px;height:80px; margin:5px;"></div>'
+			let SavedCard = '<div id="savedCard'+giveCardCounter+'" class="savedCardSmall"><span class="naam">'+name+'</span><span aria-hidden="true" class="glyphicon glyphicon-remove smallCard" id="removeSavedCard'+giveCardCounter+'"></span><img src="'+srcCard+'" style="width:100px;height:80px; margin:5px;"></div>'
 			$("#SavedCard").prepend(SavedCard)
 			$(".smallCard").click( () => {
 				console.log("clicked glyphy")
@@ -214,4 +214,7 @@ $( document ).ready( ()=> {
 			})			
 		})
 	})	
+	$( "#emailbtn" ).click( () => {
+		$( "#close" ).trigger( "click" );
+	});
 })

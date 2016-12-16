@@ -4,15 +4,16 @@
 		// Modal content
 		.modal-content
 			.modal-header
-				button.close(type='button', data-dismiss='modal') ×
+				button#close.close(type='button', data-dismiss='modal') ×
 				h4.modal-title How to play
 			.modal-body
 				h5 Read Card and Drink
 			.modal-footer
 				p Leave your email if u want to be updated!
 				div.center
-					input(type="text" name="NamePlayer" required)
-					input.btn(type="button" value="Add")
+					form(method="post", action="/email")
+						input(type="text" name="email" required)
+						input#emailbtn.btn.btn-info(type="submit" value="Meow me later")
 // Modal Add Player
 #AddPlayerModal.modal.fade(role='dialog')
 	.modal-dialog
@@ -53,7 +54,7 @@
 			.modal-body
 				form(method="post",enctype="multipart/form-data",action="/upload") 
 					p 
-						textarea(style="min-height:250px; width:100%;" rows="10" cols="50" type="text",name="Rule") Meow...What is your idea? Choose Single for a single player point card, Team for a team game with points or just choose regular for a just drink no point card. 
+						textarea(style="min-height:250px; width:100%;" rows="10" cols="50" type="text",name="Rule") Meow...What is your idea? Choose Single for a single player point card, Team for a team game with points or just choose regular for a just drink no point card. Choose an image of 250px by 260px for the best results. Or just leave it empty.
 					span
 						input(style="margin: 20px;" type='radio', name='Type', value='Single')
 						|  Single     
