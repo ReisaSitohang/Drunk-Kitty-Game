@@ -1,23 +1,25 @@
 'use strict'
 //__________Import Modules
-const express    =  require( 'express' )
-const router     =  express.Router(  )
-const bodyParser =  require( 'body-parser' )
-const Sequelize  =  require( 'Sequelize' )
-var multer  = require('multer')
-var path = require('path')
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './public/images/')
-  },
-  filename: function (req, file, cb) {
+const express       =  require( 'express' )
+const router        =  express.Router(  )
+const bodyParser    =  require( 'body-parser' )
+const Sequelize     =  require( 'Sequelize' )
+const ReadandParser =  require (__dirname+'/../../Modules/JsonReadandParser')
+const multer        =  require('multer')
+const path          =  require('path')
+const storage       =  multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, './public/images/')
+	},
+	filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
-  }
+}
 })
 const db         =  new Sequelize('drunkkitty', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD,{
 	host: 'localhost',
 	dialect: 'postgres'
 });
+
 //Middleware
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -40,28 +42,24 @@ let User = db.define('user', {
 let Email = db.define('email', {
 	email: {type: Sequelize.STRING, unique: true},
 });
-// Put info in card DB
 
-var ReadandParser = require (__dirname+'/../Modules/JsonReadandParser')
-
-ReadandParser (__dirname+'/../Cards.json', function(jsonContent) {
-	console.log(jsonContent)
-	Card.bulkCreate(jsonContent)
-	.catch(function(err) {
-		console.log('Error ' + err);
+// Sync and put info in card DB
+db.sync( {'force': false} ).then(()=>{
+	ReadandParser (__dirname+'/../Cards.json', function(jsonContent) {
+		console.log(jsonContent)
+		Card.bulkCreate(jsonContent)
+		.catch(function(err) {
+			console.log('Error ' + err);
+		})
+		.finally(function(err) {
+			console.log('FINISHED')
+		});
 	})
-	.finally(function(err) {
-		console.log('FINISHED')
-	});
 })
-
-
-//sync
-db.sync( {'force': false} )
 
 //Set Routes
 router.get('/', (req, res) => {
-	res.render('index')
+	res.render('customgame')
 })
 
 router.get('/SwitchCard', (req, res) => {
@@ -90,20 +88,12 @@ router.post('/upload', multer({ storage: storage}).single('upl'), function(req,r
 	{ console.log(req.body) 
 		console.log(req.file.filename)
 		Card.create({
-		name: req.file.filename,
-		rule: req.body.Rule,
-		type: req.body.Type,
-		origin: "notoriginal",
+			name: req.file.filename,
+			rule: req.body.Rule,
+			type: req.body.Type,
+			origin: "notoriginal",
 		})
 		res.status(204).end(); })
-// router.post('/uploadnoimg', (res,req)=>{
-// 		Card.create({
-// 		name: req.file.filename,
-// 		rule: req.body.Rule,
-// 		type: req.body.Type,
-// 		origin: "notoriginal",
-// 		})
-// })
 
 
   ////////////////////

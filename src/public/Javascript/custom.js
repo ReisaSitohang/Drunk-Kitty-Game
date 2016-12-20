@@ -1,10 +1,10 @@
 $( document ).ready( ()=> {
 	//This function adds info on the card Bubble
 	function appendCardInfo (text) {
-	$('#CardInfo').empty();
-	$('#CardInfo').append(text);
-	$('#CardInfo').hide();
-	$('#CardInfo').fadeIn();
+		$('#CardInfo').empty();
+		$('#CardInfo').append(text);
+		$('#CardInfo').hide();
+		$('#CardInfo').fadeIn();
 	}
 	//This function shows random card and its rules
 	let NextCard = ""
@@ -30,20 +30,20 @@ $( document ).ready( ()=> {
 			$('#CardInfo-Box').fadeOut();
 			$('#CardInfo-Box').show('show');
 			appendCardInfo (CardInfo)
-				if(CardType=="Single"){
-					SinglePoint ()
-				}
-				if(CardType=="Team"){
-					TeamPoint ()
-				}
-			})
+			if(CardType=="Single"){
+				SinglePoint ()
+			}
+			if(CardType=="Team"){
+				TeamPoint ()
+			}
 		})
+	})
 	}
 	//This function gives points for the single player games
 	function SinglePoint (){
 		//Get a point yes or no?
-			let pointQ = "<div>Do you get a point?</div><div><button class='btn btn-sm btn-success' id='YES'>YES</p><button class='btn btn-sm btn-danger' id='NO'>NO</p></div><div id='nopoint'></div>"
-			$('#CardInfo').append(pointQ)
+		let pointQ = "<div>Do you get a point?</div><div><button class='btn btn-sm btn-success' id='YES'>YES</p><button class='btn btn-sm btn-danger' id='NO'>NO</p></div><div id='nopoint'></div>"
+		$('#CardInfo').append(pointQ)
 			//No point, next card
 			$('#NO').click( ()=>{
 				AppendRandomCard( )
@@ -78,7 +78,7 @@ $( document ).ready( ()=> {
 				let NewScore = OldScore+1
 				$('#score'+num).empty()
 				$('#score'+num).append("<span>"+NewScore+"</span>")
-					AppendRandomCard( )
+				AppendRandomCard( )
 			})
 			})//Closes click on yes
 	}//Closes function Single point
@@ -90,12 +90,11 @@ $( document ).ready( ()=> {
 		for (var i = 0; i < ArrayName.length; i++) {
 			console.log("I am looping")
 			let name = ArrayName[i].innerText
-			ArrayNames.push(name) 
-		}
-
+			ArrayNames.push("<span numberT='"+(i+1)+"'>"+name+"</span>")
+		}		
 		//Function that randomizes/shuffles the array
 		function shuffle(array) {
-		  var currentIndex = array.length, temporaryValue, randomIndex;
+			var currentIndex = array.length, temporaryValue, randomIndex;
 
 		  // While there remain elements to shuffle...
 		  while (0 !== currentIndex) {
@@ -108,10 +107,10 @@ $( document ).ready( ()=> {
 		    temporaryValue = array[currentIndex];
 		    array[currentIndex] = array[randomIndex];
 		    array[randomIndex] = temporaryValue;
-		  }
-
-		  return array;
 		}
+
+		return array;
+	}
 		// Get random teams, divide by 2 but doesn't have to be even numbers
 		arr = shuffle(ArrayNames);
 		let arraylength = arr.length
@@ -121,26 +120,69 @@ $( document ).ready( ()=> {
 
 		var team1 = arr
 		var team2 = team1.splice(largeteam, smallteam);
-		$('#CardInfo').append("<br><br><div><p>Meoow....Your teams : </p></div>")
+		$('#CardInfo').append("<br><br><div><p>Meoow....Your teams : </p></div><div id='Team1'><p>Team 1:</p></div><div id='Team2'><p>Team 2:</p></div>")
 		for (var i = 0; i < team1.length; i++) {
 			let name = team1[i]
-			let teams= '<button class="Team1 btn btn-sm btn-danger"><span numberteam="'+(i+1)+'">'+name+'</span><br>'
-			$('#CardInfo').append(teams)
+			let teams= '<button class="btn btn-sm btn-danger">'+name+''
+			$('#Team1').append(teams)
 		}
 
 		for (var i = 0; i < team2.length; i++) {
 			let name = team2[i]
-			let teams= '<button class="Team2 btn btn-sm btn-success"><span numberteam="'+(i+1)+'">'+name+'</span>'
-			$('#CardInfo').append(teams)
-		}		
+			let teams= '<button class="btn btn-sm btn-info">'+name+''
+			$('#Team2').append(teams)
+		}
+		$('#CardInfo').append("<p>Click on the winning team to hand out the points!</p>")
+
+		function getAllElementsWithAttribute(attribute){
+			var matchingElements = [];
+			var allElements = document.getElementsByTagName('*');
+			for (var i = 0, n = allElements.length; i < n; i++){
+				if (allElements[i].getAttribute(attribute) !== null)
+				{
+      	// Element exists with attribute. Add to array.
+		      matchingElements.push(allElements[i]);
+			  }
+			}
+		return matchingElements;
+		}
+
+		//Click on winning team to hand out points
+		$('#Team1').click(()=>{
+			let target = event.target.innerText
+			let num = event.target.getAttribute('numberT')
+			console.log(num)
+			// let ArrayWinners = document.getElementById('Team1').getElementsByTagName('span')
+			// let ArrayWinnerNum = []
+			// for (var i = 0; i < ArrayWinners.length; i++) {
+			// 	let num = ArrayWinners[i].numberT
+			// 	ArrayWinnerNum.push(num)
+			// }				
+			// console.log( document.getElementById('Team1').getElementsByTagName('span') )
+			// getElementsByTagName('img')
+			// let num = event.target.getAttribute('numberT')
+			// console.log(num)
+			// let theId = "#score"+num
+			// console.log(theId)
+			// //Get the old points
+			// let OldScore = Number($(theId).text())
+			// //Add a point
+			// let NewScore = OldScore+1
+			// $('#score'+num).empty()
+			// $('#score'+num).append("<span>"+NewScore+"</span>")
+			// 	AppendRandomCard( )
+		})
+		$('#Team2').click(()=>{
+
+		})
 	}
 
 
 	//Run relevant function on click button or car
 	$('#TheCard').click( () => {
 		if(CardType=="Single"){
-		$('#nopoint').empty()
-		$('#nopoint').append("Meow.. Meowwww...Give the points..Meoww..")	
+			$('#nopoint').empty()
+			$('#nopoint').append("Meow.. Meowwww...Give the points..Meoww..")	
 		}
 		else {
 			AppendRandomCard( )
@@ -149,7 +191,7 @@ $( document ).ready( ()=> {
 
 	$("#NextCard").click( () => {
 		if(CardType=="Single"){
-		$('#nopoint').append("Meow.. Meowwww...Give the points..Meoww..")		
+			$('#nopoint').append("Meow.. Meowwww...Give the points..Meoww..")		
 		}
 		else {
 			AppendRandomCard( )
@@ -218,3 +260,32 @@ $( document ).ready( ()=> {
 		$( "#close" ).trigger( "click" );
 	});
 })
+
+
+// [
+//  {
+//    "name": "Card1.png",
+//    "rule": "All the boys have to drink!",
+//    "type": "Regular"
+//  },
+//  {
+//    "name": "Card2.png",
+//    "rule": "Each player plays rock paper scissors against a player with another team. If one team has more players a player goes twice. Team with the most wins, gets points!",
+//    "type": "Team"
+//  },
+//  {
+//    "name": "Card3.png",
+//    "rule": "You have snake eyes! If a player looks you in your beautiful eyes, they have to drink. There can only be one person with snake eyes. Save this card on the deck!",
+//    "type": "Regular"
+//  },
+//  {
+//    "name": "Card4.png",
+//    "rule": "If you can cross your eyes you get a point, if not you drink!",
+//    "type": "Single"
+//  },
+//  {
+//    "name": "Card5.png",
+//    "rule": "All the girls have to drink!",
+//    "type": "Regular"
+//  }
+// ]  

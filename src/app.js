@@ -6,7 +6,7 @@ const bodyParser =  require('body-parser')
 const Sequelize  =  require('sequelize')
 const session    =  require('express-session')
 const bcrypt     =  require('bcrypt-nodejs')
-const path = require('path')
+const path       =  require('path')
 const db         =  new Sequelize('drunkkitty', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD,{
 						host: 'localhost',
 						dialect: 'postgres'

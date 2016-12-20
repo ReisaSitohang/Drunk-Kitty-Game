@@ -54,11 +54,13 @@ div.nopadding {
 div.titlebox{
   text-align: center;
 }
+
 span.title{
   font-family: titlefont;
   font-size: 76px;
   color: #fb696f;
 }
+
 button#GameRules{
   text-align: left;
 }
@@ -178,7 +180,6 @@ button.givePlayerPoint{
 
 body{
     background-color: #8ec1da;
-/*    background-color: #0b4b6c;*/
 }
 
 #animate-area   { 
@@ -187,13 +188,8 @@ body{
     background-attachment: fixed;
     background-position: bottom;
     background-repeat: repeat-x;
-    animation: animatedBackground 30s linear infinite;
+    animation: animatedBackground 40s linear infinite;
 }
-
-
-/* ============================================================================================================================
-== BUBBLE WITH A BORDER AND TRIANGLE
-** ============================================================================================================================ */
 
 /* THE SPEECH BUBBLE
 ------------------------------------------------------------------------------------------------------------------------------- */
@@ -269,9 +265,6 @@ div#CardInfo-Box .show {
   width:0;
 }
 
-/* Variant : left
------------------------------------------- */
-
 /* creates the larger triangle */
 .triangle-border.left:before {
   top:10px; /* controls vertical position */
@@ -292,4 +285,25 @@ div#CardInfo-Box .show {
 
 .buttonwidth{
   width:100%;
+}
+
+div#Team1 {
+  display: inline-block;
+  padding: 5px;
+  background-color: pink;
+  border-radius: 5px;
+}
+
+div#Team2{
+  display: inline-block;
+  padding: 5px;
+  background-color: lightblue;
+  border-radius: 5px;
+}
+
+div#Team1:hover {
+  border: solid #d9534f;
+}
+div#Team2:hover {
+  border: solid #5bc0de;
 }
