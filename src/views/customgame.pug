@@ -12,7 +12,14 @@ html
 				div
 					button#AddPlayer.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#AddPlayerModal') 
 						span(class="glyphicon glyphicon-plus" aria-hidden="true") 
-						span  Add Player				
+						span  Add Player
+				div
+					input#mins
+					button#timerbtn.btn.btn-info
+					br
+					| End game starts in 
+					span#time
+					|  minutes!								
 			.col-xs-7
 				div.titlebox
 					span.title Drunk Kitty	
