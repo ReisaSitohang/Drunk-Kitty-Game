@@ -138,7 +138,7 @@ div.savedCardSmall span.naam{
     min-height: 46px;
     width: 149px;
     padding: 10px 16px;
-    font-size: 18px;
+    font-size: 120%;
     border-radius: 6px;
     border: 3px solid rgb(243, 185, 195);
     margin: 5px;
@@ -306,4 +306,38 @@ div#Team1:hover {
 }
 div#Team2:hover {
   border: solid #5bc0de;
+}
+
+button#timer {
+  min-height: 51px;
+  text-align: center;
+  display: block;
+  float:right;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+  border-radius: 6px;
+  width: 70%;
+  background-color: #c0dfed;
+  border: 3px solid #b1cfdc;
+  padding: 5px;
+  margin: 5px;
+}
+
+span#timetext{
+  color: white;
+  font-size: 18px;
+}
+
+span.glyphicon-time{
+  color: white;
+  font-size: 18px;
+}
+
+div#puttime{
+  display: block;
+  float: right;
+}
+
+div#boxright{
+  min-height: 170px;
 }

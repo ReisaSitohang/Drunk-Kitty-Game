@@ -12,22 +12,20 @@ html
 				div
 					button#AddPlayer.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#AddPlayerModal') 
 						span(class="glyphicon glyphicon-plus" aria-hidden="true") 
-						span  Add Player
-				div
-					input#mins
-					button#timerbtn.btn.btn-info
-					br
-					| End game starts in 
-					span#time
-					|  minutes!								
+						span  Add Player							
 			.col-xs-7
 				div.titlebox
 					span.title Drunk Kitty	
 			.col-xs-3
-				div#AddCardBox
-					button#AddCard.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#AddCardModal') 
-						span(class="glyphicon glyphicon-plus" aria-hidden="true") 
-						span  Add Your Own Card!			
+				div#boxright
+					div#AddCardBox
+						button#AddCard.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#AddCardModal') 
+							span(class="glyphicon glyphicon-plus" aria-hidden="true") 
+							span  Add Your Own Card!
+					button#timer.btn
+						span#timetext
+							span(class="glyphicon glyphicon-time" aria-hidden="true")  
+							span#timetext  Set the time of your game
 		.row
 			.col-xs-2
 				#players

@@ -254,7 +254,9 @@ $( document ).ready( ()=> {
 	});
 
 	//Timer stuff
-	$('#timerbtn').click(()=>{
+	$('#timer').click(()=>{
+		$('#timer').after('<div id="puttime"><input id="mins" placeholder="minutes"/> <button id="timerbtn" class="btn btn-info">go</button></div>')
+		$('#timerbtn').click(()=>{
 		function startTimer(duration, display) {
 		    var timer = duration, minutes, seconds;
 		    setInterval(function () {
@@ -276,35 +278,13 @@ $( document ).ready( ()=> {
 		    var Minutes = 60 * min,
 		        display = $('#time');
 		    startTimer(Minutes, display);
-		});
+		})
+		$('#timetext').empty()
+		$('#timetext').append("<span>Game ends in </span><span id='time'></span>")
+		$('#timetext').hide()
+		setTimeout(function(){ $('#timetext').fadeIn(1000) }, 700);
+		$('#puttime').empty()
 	})		
+
+	})								
 })
-
-
-// [
-//  {
-//    "name": "Card1.png",
-//    "rule": "All the boys have to drink!",
-//    "type": "Regular"
-//  },
-//  {
-//    "name": "Card2.png",
-//    "rule": "Each player plays rock paper scissors against a player with another team. If one team has more players a player goes twice. Team with the most wins, gets points!",
-//    "type": "Team"
-//  },
-//  {
-//    "name": "Card3.png",
-//    "rule": "You have snake eyes! If a player looks you in your beautiful eyes, they have to drink. There can only be one person with snake eyes. Save this card on the deck!",
-//    "type": "Regular"
-//  },
-//  {
-//    "name": "Card4.png",
-//    "rule": "If you can cross your eyes you get a point, if not you drink!",
-//    "type": "Single"
-//  },
-//  {
-//    "name": "Card5.png",
-//    "rule": "All the girls have to drink!",
-//    "type": "Regular"
-//  }
-// ]  
