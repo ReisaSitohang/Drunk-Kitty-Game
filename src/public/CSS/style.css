@@ -3,6 +3,23 @@
     src: url(./../fonts/PORKH___.TTF);
 }
 
+body {
+font-size: 100%; /* Makes the font go to 16 pixels */
+}
+
+
+h1.title{
+  font: 8em titlefont;
+  text-align: center;
+  color: #fb696f;
+}
+
+
+h1 {
+ /* 18px :  16px = 1.2em*/
+}
+
+
 h5 {
   font-family: 'Dekko', cursive;
   font-size: 30px;
@@ -37,40 +54,28 @@ p#CardInfo{
   color: #fb696f;
 }
 
-button#AddCard{
-    width: 70%;
+button#AddCard, button#setPoints{
+    width: 60%;
     background-color: #c0dfed;
     border: 3px solid #b1cfdc;
     float: right;
     margin: 5px 5px 5px 5px;
+    color: white;
 }
 
+button#AddPlayer, button#GameRules {
+    text-align: center;
+    width: 60%;
+    background-color: #c0dfed;
+    border: 3px solid #b1cfdc;
+    margin: 5px 0px 0px 5px;
+}
 
 div.nopadding {
   padding: 0px;
   padding-left: 13px;
 }
 
-div.titlebox{
-  text-align: center;
-}
-
-span.title{
-  font-family: titlefont;
-  font-size: 76px;
-  color: #fb696f;
-}
-
-button#GameRules{
-  text-align: left;
-}
-
-button#AddPlayer, button#GameRules {
-    width: 148px;
-    background-color: #c0dfed;
-    border: 3px solid #b1cfdc;
-    margin: 5px 0px 0px 5px;
-}
 span.leftspan{
   text-align: left;
 }
@@ -136,7 +141,7 @@ div.savedCardSmall span.naam{
 
 .playerStyle {
     min-height: 46px;
-    width: 149px;
+    width: 62%;
     padding: 10px 16px;
     font-size: 120%;
     border-radius: 6px;
@@ -172,21 +177,32 @@ button.givePlayerPoint{
     background-color: pink;
 }
 
-
-@keyframes animatedBackground {
-    from { background-position: bottom; }
-    to { background-position: 0 100%; }
-}
-
 body{
     background-color: #8ec1da;
 }
 
+@keyframes animatedBackground {
+    0% { background-position: 0% 100%;}
+    10% {background-position: 10% 103%;}
+    20% {background-position: 20% 100%;}
+    30%{background-position: 30% 103%;}
+    40% {background-position: 40% 100%;}
+    50% { background-position: 50% 103%;}
+    60% {background-position: 40% 100%;}
+    70% {background-position: 30% 103%;}
+    80%{background-position: 20% 100%;}
+    90% {background-position: 10% 103%;}
+    100% { background-position: 0% 100%;}
+}
+
 #animate-area   { 
     width: 100%;
+    height: 100%;
     background-image: url(./../images/floatingbeers.png);
     background-attachment: fixed;
     background-position: bottom;
+    background-repeat: repeat-x;
+    background-position: 0px 0px;
     background-repeat: repeat-x;
     animation: animatedBackground 40s linear infinite;
 }
@@ -308,27 +324,7 @@ div#Team2:hover {
   border: solid #5bc0de;
 }
 
-button#timer {
-  min-height: 51px;
-  text-align: center;
-  display: block;
-  float:right;
-  background-color: #5bc0de;
-  border-color: #46b8da;
-  border-radius: 6px;
-  width: 70%;
-  background-color: #c0dfed;
-  border: 3px solid #b1cfdc;
-  padding: 5px;
-  margin: 5px;
-}
-
-span#timetext{
-  color: white;
-  font-size: 18px;
-}
-
-span.glyphicon-time{
+span.glyphicon-plus-sign{
   color: white;
   font-size: 18px;
 }
@@ -338,6 +334,24 @@ div#puttime{
   float: right;
 }
 
-div#boxright{
-  min-height: 170px;
+button#timerbtn{
+ height: 30px;
+}
+
+input#mins{
+  height: 30px;
+  width:30%;
+  border-radius: 6px;
+  padding: 0px 0px 5px 5px;
+}
+
+div#puttime{
+  text-align: right;
+  width:relative;
+  border-radius: 6px;
+  background-color: #c0dfed;
+  border: 3px solid #b1cfdc;
+  padding:  5px;
+  margin: 5px;
+  margin-top: 0px;
 }

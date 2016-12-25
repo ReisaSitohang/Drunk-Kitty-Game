@@ -131,11 +131,11 @@ $( document ).ready( ()=> {
 				if (allElements[i].getAttribute(attribute) !== null)
 				{
       	// Element exists with attribute. Add to array.
-		      matchingElements.push(allElements[i]);
-			  }
-			}
-		return matchingElements;
-		}
+      	matchingElements.push(allElements[i]);
+      }
+  }
+  return matchingElements;
+}
 
 		//Click on winning team to hand out points
 		$('#Team1').click(()=>{
@@ -153,7 +153,7 @@ $( document ).ready( ()=> {
 				let NewScore = OldScore+1
 				$(theId).empty()
 				$(theId).append("<span>"+NewScore+"</span>")
-					AppendRandomCard( )
+				AppendRandomCard( )
 			}
 		})
 		$('#Team2').click(()=>{
@@ -171,7 +171,7 @@ $( document ).ready( ()=> {
 				let NewScore = OldScore+1
 				$(theId).empty()
 				$(theId).append("<span>"+NewScore+"</span>")
-					AppendRandomCard( )
+				AppendRandomCard( )
 			}
 		})
 	}
@@ -252,39 +252,5 @@ $( document ).ready( ()=> {
 	$( "#emailbtn" ).click( () => {
 		$( "#close" ).trigger( "click" );
 	});
-
-	//Timer stuff
-	$('#timer').click(()=>{
-		$('#timer').after('<div id="puttime"><input id="mins" placeholder="minutes"/> <button id="timerbtn" class="btn btn-info">go</button></div>')
-		$('#timerbtn').click(()=>{
-		function startTimer(duration, display) {
-		    var timer = duration, minutes, seconds;
-		    setInterval(function () {
-		        minutes = parseInt(timer / 60, 10);
-		        seconds = parseInt(timer % 60, 10);
-
-		        minutes = minutes < 10 ? "0" + minutes : minutes;
-		        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-		        display.text(minutes + ":" + seconds);
-
-		        if (--timer < 0) {
-		            timer = duration;
-		        }
-		    }, 1000);
-		}
-		let min = $('#mins').val()
-		jQuery(function ($) {
-		    var Minutes = 60 * min,
-		        display = $('#time');
-		    startTimer(Minutes, display);
-		})
-		$('#timetext').empty()
-		$('#timetext').append("<span>Game ends in </span><span id='time'></span>")
-		$('#timetext').hide()
-		setTimeout(function(){ $('#timetext').fadeIn(1000) }, 700);
-		$('#puttime').empty()
-	})		
-
-	})								
+							
 })

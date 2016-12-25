@@ -4,7 +4,7 @@ html
 		include includes/head.pug
 	body#animate-area
 		.row
-			.col-xs-2.nopadding
+			.col-xs-3.nopadding
 				div
 					button#GameRules.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#GameRulesModal') 
 						span(class="glyphicon glyphicon-list leftspan" aria-hidden="true") 
@@ -13,23 +13,22 @@ html
 					button#AddPlayer.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#AddPlayerModal') 
 						span(class="glyphicon glyphicon-plus" aria-hidden="true") 
 						span  Add Player							
-			.col-xs-7
-				div.titlebox
-					span.title Drunk Kitty	
+			.col-xs-6
+				div#titlebox
+					h1.title Drunk Kitty
 			.col-xs-3
-				div#boxright
-					div#AddCardBox
-						button#AddCard.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#AddCardModal') 
-							span(class="glyphicon glyphicon-plus" aria-hidden="true") 
-							span  Add Your Own Card!
-					button#timer.btn
-						span#timetext
-							span(class="glyphicon glyphicon-time" aria-hidden="true")  
-							span#timetext  Set the time of your game
+				div
+					button#AddCard.btn.btn-info.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#AddCardModal') 
+						span(class="glyphicon glyphicon-plus" aria-hidden="true") 
+						span  Add Card
+				div
+					button#setPoints.btn.btn-lg
+						span(class="glyphicon glyphicon-plus-sign" aria-hidden="true")
+						span  Set Points
 		.row
-			.col-xs-2
+			.col-xs-3
 				#players
-			.col-xs-7.cardcontainer
+			.col-xs-6.cardcontainer
 				div.buttons
 					button#NextCard.btn.btn-info.btn-lg(type='button') Next Card
 					button#SaveCard.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#SaveCardModal') 
@@ -46,5 +45,6 @@ html
 								img#CardImg(src='/Images/default.png')
 			.col-xs-3
 				#SavedCard
+		div#test
 		include includes/Modals.pug			
 		include includes/scripts.pug
