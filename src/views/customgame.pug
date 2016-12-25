@@ -22,9 +22,9 @@ html
 						span(class="glyphicon glyphicon-plus" aria-hidden="true") 
 						span  Add Card
 				div
-					button#setPoints.btn.btn-lg
+					button#setPoints.btn.btn-lg.buttonwidth(type='button', data-toggle='modal', data-target='#SetPointsModal')
 						span(class="glyphicon glyphicon-plus-sign" aria-hidden="true")
-						span  Set Points
+						span  Set Points					
 		.row
 			.col-xs-3
 				#players
@@ -45,6 +45,7 @@ html
 								img#CardImg(src='/Images/default.png')
 			.col-xs-3
 				#SavedCard
-		div#test
+		div#testbox
+			div#test
 		include includes/Modals.pug			
 		include includes/scripts.pug

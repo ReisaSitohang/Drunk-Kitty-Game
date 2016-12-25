@@ -60,16 +60,46 @@ $( document ).ready( ()=> {
 				}
 			// Get the player that gets a points
 			$(".givePlayerPoint").click( () => {
-				let target = event.target.innerText
+				let name = event.target.innerText
+				console.log(name)
 				let num = event.target.getAttribute('number')
 				let theId = "#score"+num
 				//Get the old points
 				let OldScore = Number($(theId).text())
-				//Add a point
-				let NewScore = OldScore+1
-				$('#score'+num).empty()
-				$('#score'+num).append("<span>"+NewScore+"</span>")
-				AppendRandomCard( )
+				//Add a point default mode no points set
+				if( points == 0){
+					let NewScore = OldScore+1
+					$('#score'+num).empty()
+					$('#score'+num).append("<span>"+NewScore+"</span>")
+					AppendRandomCard( )
+				}
+				//Add a point if points set not reached
+				if( points > 0){
+					if(OldScore < points){
+						let NewScore = OldScore+1
+						$('#score'+num).empty()
+						$('#score'+num).append("<span>"+NewScore+"</span>")
+						if(NewScore==points){
+							$('#Playa'+num).css({"background-color":"lightgreen", "border-color":"#7fce7f"})
+							$('#test').append("<p class='test'>Good job "+name+" you have reached "+points+" points!<p/>")
+							$('#test').hide()
+							$('#test').fadeIn(2000)
+							$('#test').fadeOut(2000,()=>{
+								$('#test').empty()
+							})
+						}
+						AppendRandomCard( )
+					}
+					if(OldScore == points){
+						$('#test').append("<p class='test'>Meoww "+name+" is awesome!<p/>")
+						$('#test').hide()
+						$('#test').fadeIn(2000)
+						$('#test').fadeOut(2000,()=>{
+							$('#test').empty()
+						})						
+						AppendRandomCard( )
+					}					
+				}
 			})
 			})//Closes click on yes
 	}//Closes function Single point
@@ -146,15 +176,45 @@ $( document ).ready( ()=> {
 				winners.push(num)
 			}
 			for (var i = 0; i < winners.length; i++) {
+				let name = document.getElementById('Playa'+winners[i]).getElementsByClassName('namelist')[0].innerText
 				let theId = "#score"+winners[i]
 				//Get the old points
 				let OldScore = Number($(theId).text())
 				//Add a point
 				let NewScore = OldScore+1
-				$(theId).empty()
-				$(theId).append("<span>"+NewScore+"</span>")
-				AppendRandomCard( )
+				//Add a point default mode no points set
+				if( points == 0){
+					let NewScore = OldScore+1
+					$(theId).empty()
+					$(theId).append("<span>"+NewScore+"</span>")
+				}
+				//Add a point if points set not reached
+				if( points > 0){
+					if(OldScore < points){
+						let NewScore = OldScore+1
+						$(theId).empty()
+						$(theId).append("<span>"+NewScore+"</span>")
+						if(NewScore==points){
+							$('#Playa'+winners[i]).css({"background-color":"lightgreen", "border-color":"#7fce7f"})
+							$('#test').append("<p class='test'>Good job "+name+" you have reached "+points+" points!<p/>")
+							$('#test').hide()
+							$('#test').fadeIn(2000)
+							$('#test').fadeOut(2000,()=>{
+								$('#test').empty()
+							})
+						}
+					}
+					if(OldScore == points){
+						$('#test').append("<p class='test'>Meoww "+name+" is awesome!<p/>")
+						$('#test').hide()
+						$('#test').fadeIn(2000)
+						$('#test').fadeOut(2000,()=>{
+							$('#test').empty()
+						})						
+					}					
+				}
 			}
+			AppendRandomCard( )
 		})
 		$('#Team2').click(()=>{
 			let ArrayWinners = document.getElementById('Team2').getElementsByTagName('span')
@@ -164,15 +224,45 @@ $( document ).ready( ()=> {
 				winners.push(num)
 			}
 			for (var i = 0; i < winners.length; i++) {
+				let name = document.getElementById('Playa'+winners[i]).getElementsByClassName('namelist')[0].innerText
 				let theId = "#score"+winners[i]
 				//Get the old points
 				let OldScore = Number($(theId).text())
 				//Add a point
 				let NewScore = OldScore+1
-				$(theId).empty()
-				$(theId).append("<span>"+NewScore+"</span>")
-				AppendRandomCard( )
+				//Add a point default mode no points set
+				if( points == 0){
+					let NewScore = OldScore+1
+					$(theId).empty()
+					$(theId).append("<span>"+NewScore+"</span>")
+				}
+				//Add a point if points set not reached
+				if( points > 0){
+					if(OldScore < points){
+						let NewScore = OldScore+1
+						$(theId).empty()
+						$(theId).append("<span>"+NewScore+"</span>")
+						if(NewScore==points){
+							$('#Playa'+winners[i]).css({"background-color":"lightgreen", "border-color":"#7fce7f"})
+							$('#test').append("<p class='test'>Good job "+name+" you have reached "+points+" points!<p/>")
+							$('#test').hide()
+							$('#test').fadeIn(2000)
+							$('#test').fadeOut(2000,()=>{
+								$('#test').empty()
+							})
+						}
+					}
+					if(OldScore == points){
+						$('#test').append("<p class='test'>Meoww "+name+" is awesome!<p/>")
+						$('#test').hide()
+						$('#test').fadeIn(2000)
+						$('#test').fadeOut(2000,()=>{
+							$('#test').empty()
+						})						
+					}					
+				}
 			}
+			AppendRandomCard( )
 		})
 	}
 
@@ -250,7 +340,14 @@ $( document ).ready( ()=> {
 		})
 	})	
 	$( "#emailbtn" ).click( () => {
-		$( "#close" ).trigger( "click" );
+		$( ".close" ).trigger( "click" );
 	});
+
+	//Default points:
+	let points=2
+	//Set points for the game
+	$("#SetPointsBTN").click(()=>{
+		$( ".close" ).trigger( "click" );
+	})
 							
 })

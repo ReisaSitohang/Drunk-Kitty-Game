@@ -5,6 +5,7 @@
 
 body {
 font-size: 100%; /* Makes the font go to 16 pixels */
+position: relative;
 }
 
 
@@ -61,6 +62,10 @@ button#AddCard, button#setPoints{
     float: right;
     margin: 5px 5px 5px 5px;
     color: white;
+}
+
+button#setPoints{
+ margin-top: 0px;
 }
 
 button#AddPlayer, button#GameRules {
@@ -355,3 +360,41 @@ div#puttime{
   margin: 5px;
   margin-top: 0px;
 }
+
+.pointsu{
+  font-family: 'Dekko', cursive;
+  font-size: 25px;
+}
+
+.center{
+  text-align: center;
+}
+input.pointsu{
+  width:61.03px;
+  height: 46px;
+  border-radius: 6px;
+  background-color: lightyellow;
+}
+
+div#testbox{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 3;
+}
+
+div#test{
+  text-align: center;
+  position: relative;
+  left: -50%;
+  width: 100%;
+}
+
+p.test{
+  font-family: 'Chewy', cursive;
+  color: yellow;
+  font-size: 20px;
+/*  text-align: center;
+  margin: 0 auto;*/
+}
+

@@ -68,3 +68,18 @@
 						input(type="submit" value="Upload")
 			.modal-footer
 				p
+// Save Card to Player
+#SetPointsModal.modal.fade(role='dialog')
+	.modal-dialog
+		// Modal content
+		.modal-content
+			.modal-header
+				button.close(type='button', data-dismiss='modal') ×
+				h2 How many points?
+			.modal-body.center
+				p.pointsu How many points to hit to be safe from the end game.
+				input.pointsu.center(type="number")
+				p
+				button#SetPointsBTN.btn.btn-info.btn-lg(type='button' value="Set") Set
+			.modal-footer
+				p
