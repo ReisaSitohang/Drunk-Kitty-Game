@@ -279,6 +279,27 @@ $( document ).ready( ()=> {
 	})
 
 	$("#NextCard").click( () => {
+		let numberPlayers = document.getElementById('players').getElementsByClassName('playerStyle').length
+		let ScoresArray = []
+		let SafePlayers= 0
+			for (var i = 0; i < numberPlayers; i++) {
+				let id='score'+(i+1)
+				console.log(id)
+				ScoresArray.push(Number(document.getElementById(id).innerText))
+			}
+		console.log(ScoresArray)
+			for (var i = 0; i < ScoresArray.length; i++) {
+				if(ScoresArray[i]==points){
+					SafePlayers=SafePlayers+1
+				}
+			}
+		if(SafePLayers = numberPlayers-1){
+			console.log("There is a loser")
+		}
+		console.log(SafePlayers)
+
+	
+
 		if(CardType=="Single"){
 			$('#nopoint').append("Meow.. Meowwww...Give the points..Meoww..")		
 		}
@@ -294,7 +315,7 @@ $( document ).ready( ()=> {
 		if ( $('#AddPlayerName').val().length > 1 ){
 			PlayerCounter = PlayerCounter+1
 			let name = $('#AddPlayerName').val()
-			$('#players').append('<div class="playerStyle" id="Playa'+PlayerCounter+'"><span id="remove'+PlayerCounter+'" class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="namelist">'+name+'</span><div id="score'+PlayerCounter+'" style="display: inline-block; float : right"><span>0</span></div></div>')
+			$('#players').append('<div class="playerStyle" id="Playa'+PlayerCounter+'"><span id="remove'+PlayerCounter+'" class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="namelist">'+name+'</span><div class="score" id="score'+PlayerCounter+'" style="display: inline-block; float : right"><span>0</span></div></div>')
 			$('#AddPlayerName').val(" ")
 			$(".glyphicon-remove").click( () => {
 				let target = "#"+event.target.id
@@ -344,10 +365,12 @@ $( document ).ready( ()=> {
 	});
 
 	//Default points:
-	let points=2
+	let points= 0
 	//Set points for the game
-	$("#SetPointsBTN").click(()=>{
-		$( ".close" ).trigger( "click" );
+	$('#setPoints').click(()=>{
+		$("#SetPointsBTN").click(()=>{
+			points = $('#custompoint').val()
+			$( ".close" ).trigger( "click" );
+		})
 	})
-							
 })

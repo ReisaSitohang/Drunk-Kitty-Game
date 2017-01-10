@@ -27,7 +27,7 @@ router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 //Define models
 let Card = db.define('card', {
-	name: {type: Sequelize.STRING, unique: true},
+	name: {type: Sequelize.STRING},
 	rule: {type: Sequelize.STRING},
 	type: {type: Sequelize.STRING},
 	origin: {type: Sequelize.STRING},
