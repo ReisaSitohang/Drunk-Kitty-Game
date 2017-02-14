@@ -11,6 +11,7 @@ $( document ).ready( ()=> {
 	let CardInfo = ""
 	let CardType = ""
 	function AppendRandomCard (){
+		loser ()
 		$.get("/SwitchCard", (Card)=>{
 			NextCard = Card.name
 			CardInfo = Card.rule
@@ -43,7 +44,7 @@ $( document ).ready( ()=> {
 		$('#CardInfo').append(pointQ)
 			//No point, next card
 			$('#NO').click( ()=>{
-				AppendRandomCard( )
+				if(thereisaloser==false){ AppendRandomCard( )}
 			})
 			//Got a point yes, who got a point?
 			$('#YES').click(()=>{
@@ -71,7 +72,7 @@ $( document ).ready( ()=> {
 					let NewScore = OldScore+1
 					$('#score'+num).empty()
 					$('#score'+num).append("<span>"+NewScore+"</span>")
-					AppendRandomCard( )
+					if(thereisaloser==false){AppendRandomCard( )}
 				}
 				//Add a point if points set not reached
 				if( points > 0){
@@ -88,7 +89,7 @@ $( document ).ready( ()=> {
 								$('#test').empty()
 							})
 						}
-						AppendRandomCard( )
+						if(thereisaloser==false){AppendRandomCard( )}
 					}
 					if(OldScore == points){
 						$('#test').append("<p class='test'>Meoww "+name+" is awesome!<p/>")
@@ -96,8 +97,8 @@ $( document ).ready( ()=> {
 						$('#test').fadeIn(2000)
 						$('#test').fadeOut(2000,()=>{
 							$('#test').empty()
-						})						
-						AppendRandomCard( )
+						})				
+						if(thereisaloser==false){AppendRandomCard( )}
 					}					
 				}
 			})
@@ -214,7 +215,7 @@ $( document ).ready( ()=> {
 					}					
 				}
 			}
-			AppendRandomCard( )
+			if(thereisaloser==false){AppendRandomCard( )}
 		})
 		$('#Team2').click(()=>{
 			let ArrayWinners = document.getElementById('Team2').getElementsByTagName('span')
@@ -262,49 +263,30 @@ $( document ).ready( ()=> {
 					}					
 				}
 			}
-			AppendRandomCard( )
+			if(thereisaloser==false){AppendRandomCard( )}
 		})
 	}
 
 
 	//Run relevant function on click button or car
 	$('#TheCard').click( () => {
+		loser()
 		if(CardType=="Single"){
 			$('#nopoint').empty()
 			$('#nopoint').append("Meow.. Meowwww...Give the points..Meoww..")	
 		}
 		else {
-			AppendRandomCard( )
+			if(thereisaloser==false){AppendRandomCard( )}
 		}
 	})
 
 	$("#NextCard").click( () => {
-		let numberPlayers = document.getElementById('players').getElementsByClassName('playerStyle').length
-		let ScoresArray = []
-		let SafePlayers= 0
-			for (var i = 0; i < numberPlayers; i++) {
-				let id='score'+(i+1)
-				console.log(id)
-				ScoresArray.push(Number(document.getElementById(id).innerText))
-			}
-		console.log(ScoresArray)
-			for (var i = 0; i < ScoresArray.length; i++) {
-				if(ScoresArray[i]==points){
-					SafePlayers=SafePlayers+1
-				}
-			}
-		if(SafePLayers = numberPlayers-1){
-			console.log("There is a loser")
-		}
-		console.log(SafePlayers)
-
-	
-
+		loser()
 		if(CardType=="Single"){
 			$('#nopoint').append("Meow.. Meowwww...Give the points..Meoww..")		
 		}
 		else {
-			AppendRandomCard( )
+			if(thereisaloser==false){AppendRandomCard( )}
 		}
 	})
 
@@ -365,12 +347,40 @@ $( document ).ready( ()=> {
 	});
 
 	//Default points:
-	let points= 0
+	let points = 0
+	let customrule = ""
+	let thereisaloser = false
 	//Set points for the game
 	$('#setPoints').click(()=>{
 		$("#SetPointsBTN").click(()=>{
 			points = $('#custompoint').val()
+			customrule = $('#customrule').val()
 			$( ".close" ).trigger( "click" );
 		})
 	})
+
+	function loser () {
+		let numberPlayers = document.getElementById('players').getElementsByClassName('playerStyle').length
+		let ScoresArray = []
+		let SafePlayers= 0
+			for (var i = 0; i < numberPlayers; i++) {
+				let id='score'+(i+1)
+				ScoresArray.push(Number(document.getElementById(id).innerText))
+			}
+			for (var i = 0; i < ScoresArray.length; i++) {
+				if(ScoresArray[i]==points){
+					SafePlayers=SafePlayers+1
+				}
+			}
+			if( points > 0 ) {
+				if(SafePlayers == (numberPlayers-1)){
+				thereisaloser = true
+				$('#CardInfo-Box').hide();
+				$('#CardInfo-Box').fadeOut();
+				$('#CardInfo-Box').show('show');
+				appendCardInfo ("The loser has to "+customrule+"!")
+				console.log("There is a loser")
+			}	
+		}
+	}
 })

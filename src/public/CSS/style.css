@@ -366,6 +366,10 @@ div#puttime{
   font-size: 25px;
 }
 
+#customrule{
+  width: 70%;
+}
+
 .center{
   text-align: center;
 }
